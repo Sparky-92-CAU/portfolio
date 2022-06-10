@@ -24,6 +24,13 @@ a:active {
 color: rgb(255, 60, 0);
 }
 
+.active{
+  text-decoration: underline;
+  text-decoration-color:black ;
+  text-underline-offset: 1em;
+  text-decoration-thickness: 4px;
+}
+
 
 .navbar {
   display: flex;
@@ -74,6 +81,38 @@ color: rgb(255, 60, 0);
      flex-shrink: 0;
         
 }
+
+.main-content{
+  
+ 
+  max-width: 40%;
+  margin-left: 10%;
+}
+
+
+.content{
+  display: flex;
+  
+  margin-right: 15%;
+  
+  padding-top: 10%;
+  align-content: center;
+  justify-items: center;
+}
+
+.footer {
+  background-color: rgba(21, 40, 56, 0.418);
+  display: flex;
+  justify-content: center;
+  min-width: 500px;
+  
+}
+
+.pic{
+  max-height: 400px;
+}
+
+
 /**@media screen and (max-width: 488px) {
 
   .navbar{
