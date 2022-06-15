@@ -112,6 +112,19 @@ color: rgb(255, 60, 0);
   max-height: 400px;
 }
 
+.hangman,.rps{
+  max-width: 200px;
+  max-height: 200px;
+}
+.project-container{
+  display:flex;
+  justify-content: space-evenly;
+  padding-top: 10%;
+
+}
+h1{
+  text-align: center;
+}
 
 /**@media screen and (max-width: 488px) {
 
