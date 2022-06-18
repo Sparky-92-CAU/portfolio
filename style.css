@@ -4,6 +4,7 @@ a{
 /* unvisited link */
 a:link {
 color: rgb(14, 13, 13);
+
 }
 
 /* visited link */
@@ -38,6 +39,7 @@ color: rgb(255, 60, 0);
   background-color: rgba(21, 40, 56, 0.418);
   flex-wrap: wrap;
  min-width: 500px;
+ 
 }
 
 .navbar img{
@@ -135,6 +137,10 @@ color: rgb(255, 60, 0);
 h1{
   text-align: center;
 }
+ .olive-and-me img{
+   
+   padding-bottom: 20%;
+ }
 
 /**@media screen and (max-width: 488px) {
 
