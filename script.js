@@ -1,11 +1,25 @@
+//variables/selectors for welcome message
 const welcomeMsg = document.querySelector(".welcome-msg");
 const welcome = document.querySelector("#welcome");
 const msg = document.querySelector("#msg")
 var english = true;
 
+// variables/selectors for profile picture
 const body = document.querySelector("body");
 const picContainer = document.querySelector(".olive-and-me");
 const links = document.querySelector("li");
+
+//variables/selectors for contact icons
+const mail = document.querySelector(".mail");
+const github = document.querySelector(".github");
+const linkedin = document.querySelector(".linkedin");
+const mobile = document.querySelector(".mobile");
+
+
+mail.addEventListener("mouseenter", function(e){
+       github.style.color = 'orange';
+})
+
 
 
 
@@ -29,6 +43,9 @@ welcomeMsg.addEventListener("click",function(e){
 
 });
 
+
+
+/* event listener that changes background color to random color  */
 picContainer.addEventListener("click", function(e){
     body.style.backgroundColor = getRandomColor();
     body.style.color= getRandomColor();
