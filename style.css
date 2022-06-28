@@ -152,21 +152,16 @@ h1{
    align-items: center;
    justify-items: center;
    margin-top: 5%;
+   flex-wrap: wrap;
  }
 
-.test{
-  display: none;
-}
-.contact-icons:hover > .test{
-    color:red;
-    display: flex;
-    flex-direction: column;
-}
+
 
 .mail-container, .git-container, .linked-container, .mobile-container{
  display: flex;
  flex-direction: column;
  align-items: center;
+
 
 }
 

@@ -16,9 +16,6 @@ const linkedin = document.querySelector(".linkedin");
 const mobile = document.querySelector(".mobile");
 
 
-mail.addEventListener("mouseenter", function(e){
-       github.style.color = 'orange';
-})
 
 
 
