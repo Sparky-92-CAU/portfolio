@@ -3,47 +3,87 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clark Urbon Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link  rel="stylesheet" href="../portfolio/style.css">
-    
+    <meta name="description" content="Explore Clark Urbon's arcade games and future tools projects.">
+    <title>Projects | Clark Urbon</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-     
-<!--NavBar-->
-<nav class="navbar">
-  <div class="left">
-   <a href="../portfolio/index.html"><img src="../portfolio/assets/Standard Logo Files/Black on Transparent.png" alt="logo" class= "grow"></a>
-   
-  </div>
-  
-  <div class="right" >
-   <ul>
-       <li class="active" ><a class= ""href="../portfolio/projects.html">Projects</a></li>
-       <li class= "grow"><a href="../portfolio/resume.html">Resume</a></li>
-      
-   </ul>
-   </div>
-  </nav>
+  <body class="projects-body">
+    <header class="navbar project-nav">
+      <a class="project-brand grow" href="index.html">
+        <img src="assets/Standard Logo Files/Black on Transparent.png" alt="Urbon Development home">
+      </a>
+      <nav class="right" aria-label="Main navigation">
+        <ul>
+          <li class="active"><a href="projects.html" aria-current="page">Projects</a></li>
+          <li class="grow"><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <body>
-    
-    
-    <h1>My Projects</h1>
-    <div class="project-container">
-      <a href="https://sparky-92-cau.github.io/rock-paper-scissors/"><img class="hangman grow" src="../portfolio/assets/rock-paper-scissors.jpg" alt="#"></a>
-      <a href="https://sparky-92-cau.github.io/hangman/"><img class="rps grow" src="../portfolio/assets/hang-man.png" alt="#"></a>
-    </div>
+    <main class="projects-page">
+      <header class="projects-header">
+        <h1>Projects</h1>
+        <p>Games, utilities, and experiments built along the way.</p>
+      </header>
 
-    
-    
-    
+      <section class="project-section" aria-labelledby="arcade-heading">
+        <div class="project-section-heading">
+          <div>
+            <h2 id="arcade-heading">Arcade</h2>
+          </div>
+          <p>Interactive games built for fun and practice.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card grow">
+            <a class="project-card-link" href="https://sparky-92-cau.github.io/rock-paper-scissors/">
+              <div class="project-card-media">
+                <img src="assets/rock-paper-scissors.jpg" alt="Rock, paper, and scissors on a wooden surface" class="project-image" loading="lazy">
+              </div>
+              <div class="project-card-content">
+                <p class="project-type">Arcade game</p>
+                <h3>Rock Paper Scissors</h3>
+                <p>A first-to-five matchup with round-by-round feedback and keyboard shortcuts.</p>
+                <span class="project-card-action">Play game <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card grow">
+            <a class="project-card-link" href="https://sparky-92-cau.github.io/hangman/">
+              <div class="project-card-media project-card-media-icon">
+                <img src="assets/hang-man.png" alt="Hangman gallows and figure logo" class="project-image project-image-icon" loading="lazy">
+              </div>
+              <div class="project-card-content">
+                <p class="project-type">Arcade game</p>
+                <h3>Hangman</h3>
+                <p>Guess the hidden word with progressive visual feedback and replayable rounds.</p>
+                <span class="project-card-action">Play game <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section tools-section" aria-labelledby="tools-heading">
+        <div class="project-section-heading">
+          <div>
+            <h2 id="tools-heading">Tools</h2>
+          </div>
+          <p>A home for practical tools and future projects.</p>
+        </div>
+        <div class="tools-placeholder">
+          <span aria-hidden="true">+</span>
+          <p>Tools are in progress. Check back soon.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer projects-footer">
+      <p>Copyright &copy; Urbon Development 2022</p>
+    </footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <script src="script.js"></script>
   </body>
-  <div class="footer">
-    <p>Copyright &copy Urbon Development 2022 </p>
-  </div>
-  
-    <!--Bootstrap Javascript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script> 
-  
-  </html>
+</html>

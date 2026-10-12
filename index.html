@@ -3,47 +3,49 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clark Urbon Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link  rel="stylesheet" href="../portfolio/style.css">
-    
+    <meta name="description" content="Clark Urbon is a software engineer focused on secure, reliable systems and application development.">
+    <title>Clark Urbon | Software Engineer</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-     
+  <body class="home-body">
+    <header class="navbar home-nav">
+      <a class="home-brand grow" href="index.html">
+        <img src="assets/Standard Logo Files/Black on Transparent.png" alt="Urbon Development home">
+      </a>
+      <nav class="right" aria-label="Main navigation">
+        <ul>
+          <li class="grow"><a href="projects.html">Projects</a></li>
+          <li class="grow"><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<nav class="navbar">
-  <div class="left">
-   <a href= "../portfolio/index.html"><img src="../portfolio/assets/Standard Logo Files/Black on Transparent.png" alt="logo" class= "grow"></a>
-   
-  </div>
-  
-  <div class="right" >
-   <ul>
-       <li class= "grow"><a href="../portfolio/projects.html">Projects</a></li>
-       <li class= "grow"><a href="../portfolio/resume.html">Resume</a></li>
-       
-   </ul>
-   </div>
-  </nav>
+    <main class="home-main">
+      <section class="home-hero" aria-labelledby="welcome">
+        <div class="home-copy">
+          <p class="home-eyebrow" id="home-eyebrow">Software Engineer · Application Development</p>
+          <h1 id="welcome">Welcome!</h1>
+          <p class="home-role" id="home-role">Building secure, reliable systems.</p>
+          <p class="home-summary" id="msg">I'm a software engineer at the IRS with experience modernizing enterprise Java systems, troubleshooting complex production issues, and coordinating releases. My background also includes operational technology cybersecurity, from asset inventories and STIG hardening to network diagrams. My goal is to keep building secure, reliable software and improve how teams maintain complex systems.</p>
+          <div class="home-actions">
+            <a class="home-button grow" href="resume.html"><span id="resume-link-label">Explore my experience</span><span aria-hidden="true">→</span></a>
+            <button class="language-toggle grow" id="language-toggle" type="button" aria-pressed="false">Leer en español</button>
+          </div>
+        </div>
 
-  <body>
-    
-    
-    <div class="content">
-    <div class="container main-content grow welcome-msg">
-    <a class="no-style" href="#"><h1 id="welcome">Welcome!</h1><p id="msg">I'm a software engineer at the IRS with experience modernizing enterprise Java systems, troubleshooting complex production issues, and coordinating releases. My background also includes operational technology cybersecurity, from asset inventories and STIG hardening to network diagrams. My goal is to keep building secure, reliable software and improve how teams maintain complex systems.</p></a></div>
-    <a class="no-style" href="#"><div class="olive-and-me pic-container img-fluid max-height: auto"><img class="pic right grow img-fluid" src="../portfolio/assets/clark-olive.jpg" alt="picture of me with my cat olive"></div></a></div>
-    
-    
-    
-    
+        <figure class="home-portrait grow">
+          <img src="assets/clark-olive.jpg" alt="Clark with his cat Olive">
+          <figcaption>Clark &amp; Olive</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p>Copyright &copy; Urbon Development 2022</p>
+    </footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <script src="script.js"></script>
   </body>
-
-  <div class="footer">
-    <p>Copyright &copy Urbon Development 2022 </p>
-</div>
-  
-    <!--Bootstrap Javascript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script> 
-    <script src="../portfolio/script.js"></script>
-  </html>
+</html>
