@@ -9,8 +9,8 @@
   </head>
   <body class="projects-body">
     <header class="navbar project-nav">
-      <a class="project-brand grow" href="index.html">
-        <img src="assets/Standard Logo Files/Black on Transparent.png" alt="Urbon Development home">
+      <a class="project-brand grow" href="index.html" aria-label="Urbon Development home">
+        <span class="brand-logo" aria-hidden="true"></span>
       </a>
       <nav class="right" aria-label="Main navigation">
         <ul>
@@ -69,11 +69,19 @@
           <div>
             <h2 id="tools-heading">Tools</h2>
           </div>
-          <p>A home for practical tools and future projects.</p>
+          <p>Practical tools for everyday needs.</p>
         </div>
-        <div class="tools-placeholder">
-          <span aria-hidden="true">+</span>
-          <p>Tools are in progress. Check back soon.</p>
+        <div class="project-grid">
+          <article class="project-card grow">
+            <a class="project-card-link" href="expense-splitter.html">
+              <div class="project-card-content">
+                <p class="project-type">Personal finance</p>
+                <h3>Expense Splitter</h3>
+                <p>Track shared purchases, customize each person’s share, and see who owes whom.</p>
+                <span class="project-card-action">Open tool <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
         </div>
       </section>
     </main>

@@ -33,7 +33,7 @@ if (languageToggle && welcome && message && eyebrow && role && resumeLinkLabel) 
       ? "Explore my experience"
       : "Conoce mi experiencia";
     document.documentElement.lang = language;
-    languageToggle.textContent = english ? "Leer en español" : "Leer en inglés";
+    languageToggle.textContent = english ? "Leer en español" : "Read in English";
     languageToggle.setAttribute("aria-pressed", String(!english));
   });
 }

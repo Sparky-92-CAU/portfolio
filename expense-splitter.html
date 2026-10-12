@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Track shared expenses, customize each person's share, and see who owes whom.">
+    <title>Expense Splitter | Clark Urbon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="expense-splitter.css">
+  </head>
+  <body class="tool-body">
+    <header class="navbar tool-nav">
+      <a class="project-brand grow" href="index.html" aria-label="Urbon Development home">
+        <span class="brand-logo" aria-hidden="true"></span>
+      </a>
+      <nav class="right" aria-label="Main navigation">
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li class="grow"><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="expense-page">
+      <header class="expense-header">
+        <p class="expense-eyebrow">Tools</p>
+        <h1>Expense Splitter</h1>
+        <p>Keep a running record of shared expenses and see the balance whenever you’re ready to settle up.</p>
+      </header>
+
+      <p class="expense-storage-warning" id="storage-warning" role="alert" hidden></p>
+      <p class="expense-notice" id="app-status" role="status" aria-live="polite" hidden></p>
+
+      <div class="expense-layout">
+        <section class="expense-panel expense-summary" aria-labelledby="balance-heading">
+          <div class="expense-panel-heading">
+            <div>
+              <p class="expense-eyebrow">Current period</p>
+              <h2 id="balance-heading">Settle-up balance</h2>
+            </div>
+            <button class="expense-secondary-button" id="settle-expenses" type="button" hidden disabled>
+              Mark expenses settled
+            </button>
+          </div>
+          <p class="expense-balance-label" id="balance-label">No unsettled expenses yet</p>
+          <p class="expense-balance-amount" id="balance-amount">$0.00</p>
+          <p class="expense-balance-help" id="balance-help">Add an expense to see the current balance.</p>
+          <div class="expense-stats">
+            <div>
+              <span>Current expenses</span>
+              <strong id="current-total">$0.00</strong>
+            </div>
+            <div>
+              <span>Paid by you</span>
+              <strong id="you-paid-total">$0.00</strong>
+            </div>
+            <div>
+              <span>Paid by partner</span>
+              <strong id="partner-paid-total">$0.00</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="expense-panel expense-entry" aria-labelledby="add-expense-heading">
+          <div class="expense-panel-heading">
+            <div>
+              <p class="expense-eyebrow">Add as you go</p>
+              <h2 id="add-expense-heading">New expense</h2>
+            </div>
+          </div>
+          <form id="expense-form">
+            <label>
+              What was it for?
+              <input id="expense-description" name="description" type="text" maxlength="100" autocomplete="off" placeholder="Groceries, dinner, gas…" required>
+            </label>
+            <div class="expense-field-row">
+              <label>
+                Amount (USD)
+                <input id="expense-amount" name="amount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" required>
+              </label>
+              <label>
+                Date
+                <input id="expense-date" name="date" type="date" required>
+              </label>
+            </div>
+            <label>
+              Paid by
+              <select id="expense-payer" name="payer" required>
+                <option value="you">You</option>
+                <option value="partner">Partner</option>
+              </select>
+            </label>
+            <div class="expense-split-field">
+              <label for="your-share">Your share (%)</label>
+              <input id="your-share" name="yourShare" type="number" min="0" max="100" step="0.1" value="50" inputmode="decimal" aria-describedby="split-help" required>
+              <p id="split-help">Partner’s share: <strong id="partner-share">50%</strong></p>
+            </div>
+            <p class="expense-form-note">Each expense starts at 50/50. Adjust your share when an expense needs a different split.</p>
+            <button class="expense-primary-button" id="add-expense" type="submit">Add expense</button>
+          </form>
+        </section>
+
+        <section class="expense-panel expense-history" aria-labelledby="current-expenses-heading">
+          <div class="expense-panel-heading">
+            <div>
+              <p class="expense-eyebrow">Unsettled items</p>
+              <h2 id="current-expenses-heading">Current expenses</h2>
+            </div>
+            <span class="expense-count" id="current-count">0</span>
+          </div>
+          <p class="expense-empty" id="current-empty">Your new expenses will appear here.</p>
+          <ul class="expense-list" id="current-expenses"></ul>
+          <details class="expense-archive" id="settled-section" hidden>
+            <summary>
+              <span>Settled history</span>
+              <span class="expense-count" id="settled-count">0</span>
+            </summary>
+            <ul class="expense-list" id="settled-expenses"></ul>
+          </details>
+          <p class="expense-storage-note">Expenses are saved in this browser on this device. They aren’t shared or synced to another device.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer tool-footer">
+      <p>Copyright &copy; Urbon Development 2022</p>
+    </footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <script src="script.js"></script>
+    <script src="expense-splitter.js"></script>
+  </body>
+</html>
