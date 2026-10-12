@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: min(1160px, calc(100% - 3rem));
   flex: 1;
-  margin: 2.5rem auto 3.5rem;
+  margin: 1.25rem auto 3.5rem;
 }
 
 .expense-header {
@@ -424,7 +424,7 @@
 @media (max-width: 600px) {
   .expense-page {
     width: calc(100% - 1.25rem);
-    margin: 1.25rem auto 2rem;
+    margin: 0.9rem auto 2rem;
   }
 
   .expense-header {

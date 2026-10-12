@@ -28,6 +28,7 @@ const currency = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
+// Keep date inputs on the user's local calendar day instead of converting through UTC.
 function localDateValue(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -35,6 +36,7 @@ function localDateValue(date = new Date()) {
   return `${year}-${month}-${day}`;
 }
 
+// Validate saved rows before using them so malformed data is never silently discarded.
 function isExpenseRecord(expense) {
   return (
     expense !== null &&
@@ -69,6 +71,7 @@ function showStorageError(message, error) {
   settleButton.disabled = true;
 }
 
+// If storage cannot be read, stop writes rather than replacing entries the app could not load.
 function readExpenses() {
   let saved;
 
@@ -116,6 +119,7 @@ function displayNotice(message) {
   appStatus.hidden = false;
 }
 
+// Persist first; only update the in-memory list after the browser confirms the write.
 function saveExpenses(nextExpenses, successMessage) {
   try {
     localStorage.setItem(storageKey, JSON.stringify(nextExpenses));
@@ -145,6 +149,7 @@ function formatPercent(percent) {
   return `${Number(percent.toFixed(1)).toLocaleString("en-US")}%`;
 }
 
+// Round your share to cents, then give the remaining cents to your partner.
 function amountOwedByYou(expense) {
   return Math.round((expense.amountCents * expense.yourSharePercent) / 100);
 }
@@ -206,6 +211,8 @@ function createExpenseRow(expense, isSettled) {
   return row;
 }
 
+// Only unsettled expenses affect the current balance: paid-by-you minus your share.
+// A positive balance means your partner owes you; a negative balance means you owe them.
 function renderExpenses() {
   const current = expenses.filter((expense) => expense.settledAt === null);
   const settled = expenses.filter((expense) => expense.settledAt !== null);
@@ -284,6 +291,7 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  // Store money as integer cents to avoid floating-point errors in later calculations.
   const amountCents = Math.round(Number(amountInput.value) * 100);
   if (!Number.isSafeInteger(amountCents) || amountCents <= 0) {
     amountInput.setCustomValidity("Enter a valid amount greater than zero.");
@@ -352,6 +360,7 @@ settleButton.addEventListener("click", () => {
     return;
   }
 
+  // Archive the current period by timestamping its expenses; keep them in history.
   const settledAt = new Date().toISOString();
   const nextExpenses = expenses.map((expense) =>
     expense.settledAt === null ? { ...expense, settledAt } : expense

@@ -221,7 +221,7 @@ h1{
 
 .resume-page {
   width: min(1160px, calc(100% - 3rem));
-  margin: 2.5rem auto 4rem;
+  margin: 1.25rem auto 4rem;
   flex: 1;
 }
 
@@ -542,6 +542,12 @@ h1{
 }
 
 @media (max-width: 600px) {
+  .breadcrumbs {
+    width: calc(100% - 1.25rem);
+    margin-top: 0.65rem;
+    font-size: 0.76rem;
+  }
+
   .resume-body .navbar {
     flex-wrap: nowrap;
     padding: 0.65rem 1rem;
@@ -557,7 +563,7 @@ h1{
 
   .resume-page {
     width: calc(100% - 1.25rem);
-    margin: 1rem auto 2rem;
+    margin: 0.9rem auto 2rem;
   }
 
   .resume-hero {
@@ -678,6 +684,59 @@ h1{
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
+}
+
+.breadcrumbs {
+  box-sizing: border-box;
+  width: min(1160px, calc(100% - 3rem));
+  margin: 0.75rem auto 0;
+  color: var(--home-muted);
+  font-size: 0.8rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.breadcrumbs a,
+.breadcrumbs a:visited {
+  color: var(--home-role);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--home-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.breadcrumb-separator {
+  color: var(--home-accent);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: var(--home-muted);
+  font-weight: 650;
+}
+
+.breadcrumbs a:focus-visible {
+  outline: 2px solid var(--home-accent);
+  outline-offset: 3px;
 }
 
 .home-body .home-nav .right {
@@ -1111,7 +1170,7 @@ h1{
   box-sizing: border-box;
   width: min(1160px, calc(100% - 3rem));
   flex: 1;
-  margin: 2.5rem auto 3.5rem;
+  margin: 1.25rem auto 3.5rem;
 }
 
 .projects-header {
