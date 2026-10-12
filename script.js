@@ -27,12 +27,16 @@ welcomeMsg.addEventListener("click",function(e){
 
     if (english){
         welcome.textContent="¡Bienvenidos!"
-        msg.textContent="Me llamo Clark Urbon y este es el sitio web de mi portfolio. El propósito de este sitio es mostrar mis habilidades con la esperanza de conseguir un puesto como desarrollador de pagina web. ¡Espero que disfrutes!"
+        welcome.lang="es";
+        msg.lang="es";
+        msg.textContent="Soy ingeniero de software en el Servicio de Impuestos Internos de Estados Unidos (IRS). Tengo experiencia modernizando sistemas empresariales en Java, resolviendo problemas complejos en producción y coordinando lanzamientos. También cuento con experiencia en ciberseguridad de tecnología operativa (OT): inventarios de dispositivos, aplicación de STIGs y elaboración de diagramas de red. Mi objetivo es seguir desarrollando software seguro y confiable y mejorar la forma en que los equipos mantienen sistemas complejos."
         english= false;
     }
     else{
         welcome.textContent="Welcome!";
-        msg.textContent="My name is Clark Urbon and this is my portfolio website.The purpose of this site is to showcase my abilities in hopes of landing a junior developer position. Enjoy!";
+        welcome.lang="en";
+        msg.lang="en";
+        msg.textContent="I'm a software engineer at the IRS with experience modernizing enterprise Java systems, troubleshooting complex production issues, and coordinating releases. My background also includes operational technology cybersecurity, from asset inventories and STIG hardening to network diagrams. My goal is to keep building secure, reliable software and improve how teams maintain complex systems.";
         english =true;
     };
 
