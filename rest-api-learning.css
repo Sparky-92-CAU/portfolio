@@ -1,0 +1,568 @@
+.rest-learning-page {
+  box-sizing: border-box;
+  width: min(1120px, calc(100% - 3rem));
+  margin: 1.5rem auto 5rem;
+  color: var(--home-text);
+}
+
+.rest-learning-page h1,
+.rest-learning-page h2,
+.rest-learning-page h3,
+.rest-learning-page p {
+  margin-top: 0;
+}
+
+.rest-learning-hero {
+  padding: clamp(1.5rem, 6vw, 4rem);
+  border: 1px solid var(--home-border);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 90% 0%, color-mix(in srgb, var(--home-accent) 13%, transparent), transparent 50%),
+    var(--home-surface);
+  box-shadow: var(--home-shadow);
+}
+
+.rest-eyebrow {
+  margin-bottom: 0.45rem;
+  color: var(--home-accent);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rest-learning-hero h1 {
+  max-width: 48rem;
+  margin-bottom: 0;
+  color: var(--home-heading);
+  font-size: clamp(2.4rem, 7vw, 4.6rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  text-align: left;
+}
+
+.rest-learning-hero > p:not(.rest-eyebrow) {
+  max-width: 43rem;
+  margin: 1rem 0 1.5rem;
+  color: var(--home-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.rest-primary-link {
+  display: inline-flex;
+  min-height: 2.8rem;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0 1rem;
+  border-radius: 0.6rem;
+  background: var(--home-button-bg);
+  color: var(--home-button-text) !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rest-progress-panel,
+.rest-lessons-panel,
+.rest-lesson-card,
+.rest-lab-card,
+.rest-quiz-card {
+  border: 1px solid var(--home-border);
+  border-radius: 1rem;
+  background: var(--home-surface);
+  box-shadow: var(--home-shadow);
+}
+
+.rest-progress-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.55fr);
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+}
+
+.rest-progress-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+}
+
+.rest-progress-copy strong {
+  color: var(--home-heading);
+}
+
+.rest-progress-copy span,
+.rest-lessons-panel > p,
+.rest-lesson-duration,
+.rest-response-meta,
+.rest-lab-note,
+.rest-section-heading > p {
+  color: var(--home-muted);
+  font-size: 0.86rem;
+}
+
+.rest-progress-track {
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--home-soft);
+}
+
+.rest-progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--home-accent);
+  transition: width 180ms ease;
+}
+
+.rest-learning-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.8fr);
+  align-items: start;
+  gap: 1rem;
+  scroll-margin-top: 1rem;
+}
+
+.rest-lessons-panel,
+.rest-lesson-card {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.rest-lessons-panel h2 {
+  margin-bottom: 0.35rem;
+  color: var(--home-heading);
+  font-size: 1.2rem;
+}
+
+.rest-lessons-panel > p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.rest-lesson-nav {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.rest-lesson-nav button {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 0.65rem;
+  background: transparent;
+  color: var(--home-text);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.rest-lesson-nav button[aria-current="step"] {
+  border-color: var(--home-border);
+  background: var(--home-soft);
+  color: var(--home-heading);
+  font-weight: 700;
+}
+
+.rest-lesson-nav button:hover {
+  border-color: var(--home-border);
+}
+
+.rest-lesson-index {
+  color: var(--home-accent);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.rest-lesson-check {
+  color: var(--home-accent);
+  font-weight: 800;
+}
+
+.rest-lesson-heading,
+.rest-response-heading,
+.rest-section-heading,
+.rest-request-actions,
+.rest-lesson-actions,
+.rest-body-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rest-lesson-number {
+  color: var(--home-accent);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.rest-lesson-card h2 {
+  margin: 0.6rem 0 1rem;
+  color: var(--home-heading);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.rest-lesson-content {
+  min-height: 15rem;
+  color: var(--home-text);
+  line-height: 1.7;
+}
+
+.rest-lesson-content p {
+  margin: 0 0 1rem;
+}
+
+.rest-lesson-content ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.rest-lesson-content code,
+.rest-lab-note code,
+.rest-lesson-content pre {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.rest-lesson-content code {
+  padding: 0.12rem 0.3rem;
+  border-radius: 0.25rem;
+  background: var(--home-soft);
+  color: var(--home-heading);
+  font-size: 0.92em;
+}
+
+.rest-lesson-content pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.7rem;
+  background: var(--home-soft);
+  color: var(--home-text);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.rest-lesson-content pre code {
+  padding: 0;
+  background: none;
+}
+
+.rest-lesson-actions {
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--home-border);
+}
+
+.rest-button {
+  min-height: 2.7rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.55rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.rest-button-primary {
+  border-color: transparent;
+  background: var(--home-button-bg);
+  color: var(--home-button-text);
+}
+
+.rest-button-secondary {
+  background: var(--home-surface);
+  color: var(--home-text);
+}
+
+.rest-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.rest-lab-section,
+.rest-quiz-section {
+  margin-top: 3.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.rest-section-heading {
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.rest-section-heading h2 {
+  margin: 0;
+  color: var(--home-heading);
+  font-size: clamp(1.6rem, 4vw, 2.15rem);
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.rest-section-heading > p {
+  max-width: 23rem;
+  margin: 0;
+  line-height: 1.55;
+  text-align: right;
+}
+
+.rest-lab-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.rest-request-column,
+.rest-response-column {
+  min-width: 0;
+}
+
+.rest-request-column {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+}
+
+.rest-request-column label,
+.rest-body-label label {
+  color: var(--home-heading);
+  font-size: 0.87rem;
+  font-weight: 700;
+}
+
+.rest-request-column input,
+.rest-request-column select,
+.rest-request-column textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.7rem;
+  margin-bottom: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.55rem;
+  background: var(--home-page-bg);
+  color: var(--home-text);
+  font: inherit;
+}
+
+.rest-request-column input,
+.rest-request-column textarea {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.88rem;
+}
+
+.rest-request-column textarea {
+  resize: vertical;
+}
+
+.rest-body-label {
+  margin-top: 0.3rem;
+}
+
+.rest-body-label span {
+  color: var(--home-muted);
+  font-size: 0.74rem;
+}
+
+.rest-request-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.rest-lab-note {
+  margin: 0.3rem 0 0;
+  line-height: 1.55;
+}
+
+.rest-response-column {
+  padding: 1rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.75rem;
+  background: var(--home-soft);
+}
+
+.rest-response-heading h3 {
+  margin: 0;
+  color: var(--home-heading);
+  font-size: 1rem;
+}
+
+.rest-status-badge {
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: var(--home-surface);
+  color: var(--home-muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
+.rest-status-badge[data-state="success"] {
+  color: #16734a;
+}
+
+.rest-status-badge[data-state="error"] {
+  color: #b42318;
+}
+
+.theme-dark .rest-status-badge[data-state="success"] {
+  color: #84ddb2;
+}
+
+.theme-dark .rest-status-badge[data-state="error"] {
+  color: #ffaaa3;
+}
+
+.rest-response-meta {
+  margin: 0.8rem 0;
+  line-height: 1.5;
+}
+
+.rest-response-body {
+  box-sizing: border-box;
+  min-height: 18rem;
+  max-height: 28rem;
+  overflow: auto;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.55rem;
+  background: var(--home-surface);
+  color: var(--home-text);
+  font: 0.83rem/1.6 Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.rest-quiz-card {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.rest-quiz-question {
+  margin-bottom: 1rem;
+  color: var(--home-heading);
+  font-weight: 700;
+}
+
+.rest-quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.rest-quiz-option {
+  min-height: 2.7rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--home-border);
+  border-radius: 0.55rem;
+  background: var(--home-surface);
+  color: var(--home-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+}
+
+.rest-quiz-option[aria-pressed="true"] {
+  border-color: var(--home-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--home-accent) 25%, transparent);
+}
+
+.rest-quiz-feedback {
+  min-height: 1.5rem;
+  margin: 1rem 0 0;
+  color: var(--home-muted);
+  font-weight: 650;
+}
+
+.rest-quiz-feedback[data-state="correct"] {
+  color: #16734a;
+}
+
+.rest-quiz-feedback[data-state="incorrect"] {
+  color: #b42318;
+}
+
+.theme-dark .rest-quiz-feedback[data-state="correct"] {
+  color: #84ddb2;
+}
+
+.theme-dark .rest-quiz-feedback[data-state="incorrect"] {
+  color: #ffaaa3;
+}
+
+.rest-learning-page a:focus-visible,
+.rest-learning-page button:focus-visible,
+.rest-learning-page input:focus-visible,
+.rest-learning-page select:focus-visible,
+.rest-learning-page textarea:focus-visible {
+  outline: 3px solid var(--home-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .rest-learning-layout,
+  .rest-lab-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rest-lesson-content {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .rest-learning-page {
+    width: calc(100% - 1.25rem);
+    margin-top: 1rem;
+  }
+
+  .rest-progress-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rest-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rest-section-heading > p {
+    text-align: left;
+  }
+
+  .rest-lesson-actions {
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .rest-lesson-actions .rest-button {
+    flex: 1;
+  }
+
+  .rest-response-body {
+    min-height: 12rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rest-progress-track span {
+    transition: none;
+  }
+}

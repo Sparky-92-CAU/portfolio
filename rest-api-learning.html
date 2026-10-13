@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn REST API fundamentals with guided lessons, a Java Spring example, a quiz, and an interactive request simulator.">
+    <title>REST API Learning Lab | Clark Urbon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rest-api-learning.css">
+  </head>
+  <body class="tool-body">
+    <header class="navbar tool-nav">
+      <a class="project-brand grow" href="index.html" aria-label="Urbon Development home">
+        <span class="brand-logo" aria-hidden="true"></span>
+      </a>
+      <nav class="right" aria-label="Main navigation">
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li class="grow"><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li>
+          <a href="projects.html">Projects</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li>
+          <a href="projects.html#experiments">Experiments</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li><span aria-current="page">REST API Learning Lab</span></li>
+      </ol>
+    </nav>
+
+    <main class="rest-learning-page">
+      <header class="rest-learning-hero">
+        <p class="rest-eyebrow">Interactive learning · Java</p>
+        <h1>REST API Learning Lab</h1>
+        <p>Learn how web APIs work, practice HTTP requests, and see how the pieces fit together in a Java Spring application.</p>
+        <a class="rest-primary-link" href="#lessons">Start learning <span aria-hidden="true">↓</span></a>
+      </header>
+
+      <section class="rest-progress-panel" aria-label="Learning progress">
+        <div class="rest-progress-copy">
+          <strong id="progress-label">Your learning path</strong>
+          <span id="progress-count">0 of 5 lessons complete</span>
+        </div>
+        <div class="rest-progress-track" id="progress-track" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
+          <span id="progress-fill"></span>
+        </div>
+      </section>
+
+      <section class="rest-learning-layout" id="lessons" aria-labelledby="lessons-heading">
+        <aside class="rest-lessons-panel">
+          <h2 id="lessons-heading">Learning path</h2>
+          <p>Work through the lessons in order or jump to a topic.</p>
+          <nav class="rest-lesson-nav" id="lesson-nav" aria-label="Lessons"></nav>
+        </aside>
+
+        <article class="rest-lesson-card" aria-live="polite">
+          <div class="rest-lesson-heading">
+            <span class="rest-lesson-number" id="lesson-number">LESSON 01</span>
+            <span class="rest-lesson-duration" id="lesson-duration">3 min</span>
+          </div>
+          <h2 id="lesson-title"></h2>
+          <div class="rest-lesson-content" id="lesson-content"></div>
+          <div class="rest-lesson-actions">
+            <button class="rest-button rest-button-secondary" id="previous-lesson" type="button">Previous lesson</button>
+            <button class="rest-button rest-button-primary" id="complete-lesson" type="button">Mark complete &amp; continue</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="rest-lab-section" id="request-lab" aria-labelledby="request-lab-heading">
+        <div class="rest-section-heading">
+          <div>
+            <p class="rest-eyebrow">Try it yourself</p>
+            <h2 id="request-lab-heading">Request &amp; response lab</h2>
+          </div>
+          <p>Send requests to a tiny mock books API. Nothing leaves your browser.</p>
+        </div>
+        <div class="rest-lab-card">
+          <div class="rest-request-column">
+            <label for="request-method">HTTP method</label>
+            <select id="request-method">
+              <option>GET</option>
+              <option>POST</option>
+              <option>PUT</option>
+              <option>PATCH</option>
+              <option>DELETE</option>
+            </select>
+            <label for="request-path">Request path</label>
+            <input id="request-path" type="text" value="/api/books" autocomplete="off" spellcheck="false">
+            <div class="rest-body-label">
+              <label for="request-body">JSON request body</label>
+              <span>Used by POST, PUT, and PATCH</span>
+            </div>
+            <textarea id="request-body" rows="7" spellcheck="false">{
+  "title": "The Pragmatic Programmer",
+  "author": "David Thomas"
+}</textarea>
+            <div class="rest-request-actions">
+              <button class="rest-button rest-button-primary" id="send-request" type="button">Send request</button>
+              <button class="rest-button rest-button-secondary" id="reset-api" type="button">Reset sample data</button>
+            </div>
+            <p class="rest-lab-note">This is a local simulation, not a live Java server. Try <code>GET /api/books/1</code>, then add a book with <code>POST /api/books</code>.</p>
+          </div>
+          <section class="rest-response-column" aria-labelledby="response-heading">
+            <div class="rest-response-heading">
+              <h3 id="response-heading">Response</h3>
+              <span id="response-status" class="rest-status-badge" data-state="idle">Ready</span>
+            </div>
+            <p class="rest-response-meta" id="response-meta">Send a request to see its status and response body.</p>
+            <pre class="rest-response-body" id="response-body" aria-live="polite"><code>Response will appear here.</code></pre>
+          </section>
+        </div>
+      </section>
+
+      <section class="rest-quiz-section" id="knowledge-check" aria-labelledby="quiz-heading">
+        <div class="rest-section-heading">
+          <div>
+            <p class="rest-eyebrow">Check your understanding</p>
+            <h2 id="quiz-heading">Quick knowledge check</h2>
+          </div>
+          <p>Choose the best answer. You can try again if you miss it.</p>
+        </div>
+        <div class="rest-quiz-card">
+          <p class="rest-quiz-question">Which HTTP method is generally used to retrieve a resource without changing it?</p>
+          <div class="rest-quiz-options" role="group" aria-label="Answer choices">
+            <button class="rest-quiz-option" type="button" data-answer="POST">POST</button>
+            <button class="rest-quiz-option" type="button" data-answer="GET">GET</button>
+            <button class="rest-quiz-option" type="button" data-answer="DELETE">DELETE</button>
+          </div>
+          <p class="rest-quiz-feedback" id="quiz-feedback" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer tool-footer">
+      <p>Copyright &copy; Urbon Development 2022</p>
+    </footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <script src="script.js"></script>
+    <script src="rest-api-learning.js"></script>
+  </body>
+</html>
