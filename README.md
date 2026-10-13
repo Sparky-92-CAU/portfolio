@@ -9,6 +9,7 @@ A responsive, static portfolio site built with HTML, CSS, and JavaScript. The si
 - `resume.html` - Experience, education, certification, and skills.
 - `expense-splitter.html` - Local expense tracker and 50/50 split calculator, with optional custom shares.
 - `guitar-song-finder.html` - Song lookup and guitar practice frontend.
+- `rest-api-learning.html` - Guided REST API lessons, a knowledge check, and a browser-based request simulator with Java Spring examples.
 
 ## Arcade games
 
@@ -57,6 +58,10 @@ GitHub Pages hosts only the static frontend; the Java API needs its own web serv
 The deployed service URL is configured in the `song-finder-api` meta tag in `guitar-song-finder.html`. If the service is recreated with a different URL, update the meta tag and deploy the frontend again. The backend already allows the portfolio's GitHub Pages origin by default.
 
 Render's free web services spin down after 15 minutes without traffic. The first request after a pause can take about a minute while the API starts again.
+
+## REST API Learning Lab
+
+Open **Projects → Experiments → REST API Learning Lab** to study REST concepts, HTTP methods and status codes, JSON, and Java Spring controllers. Complete the guided lessons, test your understanding with the quiz, and use the request lab to create, read, update, and delete sample books. The request lab is a browser-only simulation; it does not connect to a server or send data over the network.
 
 ## Run locally
 
