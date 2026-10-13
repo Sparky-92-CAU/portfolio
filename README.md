@@ -50,6 +50,14 @@ Open `http://localhost:8000/guitar-song-finder.html`. The frontend uses the loca
 
 Run the backend tests from `guitar-song-finder-api` with `.\mvnw.cmd test`.
 
+## Deploy the API with Render
+
+GitHub Pages hosts only the static frontend; the Java API needs its own web service. The root `render.yaml` defines a free Render service that builds the API with Docker. In Render, create a Blueprint from this repository and provide `YOUTUBE_API_KEY` when prompted. Keep the key in Render's environment settings; never add it to the repository.
+
+After the first deploy, copy the service's public URL and set it as the value of the `song-finder-api` meta tag in `guitar-song-finder.html` (without a trailing slash). Commit and push that change to `main` so GitHub Pages deploys the frontend with the API URL. The backend already allows the portfolio's GitHub Pages origin by default.
+
+Render's free web services spin down after 15 minutes without traffic. The first request after a pause can take about a minute while the API starts again.
+
 ## Run locally
 
 The site has no build step. From the repository root, serve the files with Python:

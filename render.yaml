@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: acoustic-song-finder-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./guitar-song-finder-api/Dockerfile
+    dockerContext: ./guitar-song-finder-api
+    envVars:
+      - key: YOUTUBE_API_KEY
+        sync: false
