@@ -31,7 +31,7 @@ The Acoustic Song Finder is an interactive practice hub. Search by song title an
 
 The page includes a Practice Station with an interactive metronome, tuning and capo selectors, and a chord-notes scratchpad that saves automatically in the browser.
 
-GitHub Pages serves the static frontend; video lookup is provided by a separate Java Spring Boot API using the YouTube Data API. The tab-catalog searches work without the backend. The API needs a YouTube API key supplied as the `YOUTUBE_API_KEY` environment variable. Never commit the key. Set the deployed API URL in the `song-finder-api` meta tag in `guitar-song-finder.html`. The backend allows local portfolio development and the portfolio's GitHub Pages origin by default; set `CORS_ALLOWED_ORIGINS` when the frontend has a different origin.
+GitHub Pages serves the static frontend; video lookup is provided by the Java Spring Boot API at `https://acoustic-song-finder-api.onrender.com`, configured in the `song-finder-api` meta tag in `guitar-song-finder.html`. The tab-catalog searches work without the backend. The API needs a YouTube API key supplied as the `YOUTUBE_API_KEY` environment variable. Never commit the key. The backend allows local portfolio development and the portfolio's GitHub Pages origin by default; set `CORS_ALLOWED_ORIGINS` when the frontend has a different origin.
 
 To run the backend locally, install JDK 25 or newer and set a YouTube Data API key. The Maven wrapper downloads Maven if needed:
 
@@ -54,7 +54,7 @@ Run the backend tests from `guitar-song-finder-api` with `.\mvnw.cmd test`.
 
 GitHub Pages hosts only the static frontend; the Java API needs its own web service. The root `render.yaml` defines a free Render service that builds the API with Docker. In Render, create a Blueprint from this repository and provide `YOUTUBE_API_KEY` when prompted. Keep the key in Render's environment settings; never add it to the repository.
 
-After the first deploy, copy the service's public URL and set it as the value of the `song-finder-api` meta tag in `guitar-song-finder.html` (without a trailing slash). Commit and push that change to `main` so GitHub Pages deploys the frontend with the API URL. The backend already allows the portfolio's GitHub Pages origin by default.
+The deployed service URL is configured in the `song-finder-api` meta tag in `guitar-song-finder.html`. If the service is recreated with a different URL, update the meta tag and deploy the frontend again. The backend already allows the portfolio's GitHub Pages origin by default.
 
 Render's free web services spin down after 15 minutes without traffic. The first request after a pause can take about a minute while the API starts again.
 
