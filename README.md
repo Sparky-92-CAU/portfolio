@@ -5,17 +5,10 @@ A responsive, static portfolio site built with HTML, CSS, and JavaScript. The si
 ## Pages and projects
 
 - `index.html` - Welcome page with English/Spanish text and a persistent theme control.
-- `projects.html` - Arcade games, tools, and experiments.
+- `projects.html` - Arcade games and tools.
 - `resume.html` - Experience, education, certification, and skills.
 - `expense-splitter.html` - Local expense tracker and 50/50 split calculator, with optional custom shares.
-- `guitar-song-finder.html` - Song lookup and guitar practice frontend.
-
-## Arcade games
-
-Both games are standalone GitHub Pages projects linked from **Projects → Arcade**:
-
-- [Rock Paper Scissors](https://sparky-92-cau.github.io/rock-paper-scissors/) - First to five wins, with round-by-round feedback and keyboard shortcuts.
-- [Hangman](https://sparky-92-cau.github.io/hangman/) - Guess the hidden word with progressive visual feedback and replayable rounds.
+- Hangman and Rock Paper Scissors are hosted as separate GitHub Pages projects and linked from the Arcade section.
 
 ## Expense Splitter
 
@@ -24,31 +17,6 @@ Open **Projects → Tools → Expense Splitter** to record shared purchases. Eac
 The current balance considers only unsettled expenses. A positive balance means your partner owes you; a negative balance means you owe your partner. **Mark expenses settled** archives the current expenses without removing them from settled history.
 
 Expenses are saved in the browser's local storage on the current device. They are not uploaded or synchronized with another device. Clearing the browser's site data will remove them.
-
-## Song Lookup: Acoustic Song Finder
-
-The Acoustic Song Finder is an interactive practice hub. Search by song title and optionally artist to find guitar lesson videos, with results prioritizing instructors such as Marty Music, JustinGuitar, and Andy Guitar. It also creates site-filtered searches for Songsterr, Ultimate Guitar, and E-Chords rather than scraping tab catalogs.
-
-The page includes a Practice Station with an interactive metronome, tuning and capo selectors, and a chord-notes scratchpad that saves automatically in the browser.
-
-GitHub Pages serves the static frontend; video lookup is provided by a separate Java Spring Boot API using the YouTube Data API. The tab-catalog searches work without the backend. The API needs a YouTube API key supplied as the `YOUTUBE_API_KEY` environment variable. Never commit the key. Set the deployed API URL in the `song-finder-api` meta tag in `guitar-song-finder.html`. The backend allows local portfolio development and the portfolio's GitHub Pages origin by default; set `CORS_ALLOWED_ORIGINS` when the frontend has a different origin.
-
-To run the backend locally, install JDK 25 or newer and set a YouTube Data API key. The Maven wrapper downloads Maven if needed:
-
-```powershell
-$env:YOUTUBE_API_KEY = "your-key"
-.\mvnw.cmd spring-boot:run
-```
-
-In a second terminal, serve the portfolio root:
-
-```powershell
-python -m http.server 8000
-```
-
-Open `http://localhost:8000/guitar-song-finder.html`. The frontend uses the local API automatically on `localhost`; the tab-catalog search links also work without the backend. The API endpoint is `GET /api/search?song=...&artist=...`.
-
-Run the backend tests from `guitar-song-finder-api` with `.\mvnw.cmd test`.
 
 ## Run locally
 
