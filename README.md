@@ -10,6 +10,7 @@ A responsive, static portfolio site built with HTML, CSS, and JavaScript. The si
 - `expense-splitter.html` - Local expense tracker and 50/50 split calculator, with optional custom shares.
 - `guitar-song-finder.html` - Song lookup and guitar practice frontend.
 - `rest-api-learning.html` - Guided REST API lessons, a knowledge check, and a browser-based request simulator with Java Spring examples.
+- `cat-store.html` - Cat-store catalog, role-based account screens, inventory tools, and PostgreSQL-backed orders.
 
 ## Arcade games
 
@@ -62,6 +63,59 @@ Render's free web services spin down after 15 minutes without traffic. The first
 ## REST API Learning Lab
 
 Open **Projects → Experiments → REST API Learning Lab** to study REST concepts, HTTP methods and status codes, JSON, and Java Spring controllers. Complete the guided lessons, test your understanding with the quiz, and use the request lab to create, read, update, and delete sample books. The request lab is a browser-only simulation; it does not connect to a server or send data over the network.
+
+## Whisker & Willow Cat Store
+
+The Cat Store is a full-stack portfolio demonstration. Its static portfolio page calls a separate Java 21 Spring Boot API. The API stores accounts, customer profiles, individual cat listings, orders, and order items in PostgreSQL using Spring Data JPA and Flyway migrations.
+
+Customers can register, browse fictional sample listings, and place orders without payment. Placing an order locks and reserves the selected cats in one database transaction. The admin can add, edit, archive, and restore available listings; review orders; fulfill an order (marking the cats sold); or cancel an order (returning reserved cats to the catalog). Order history and the original price remain in the database. Public registration always creates a customer; the admin is created from server-side environment variables and cannot be self-registered.
+
+The Flyway schema has five tables: `users` stores email, BCrypt password hash, and trusted role; `customers` holds the customer profile; `cats` tracks each unique listing and availability; `store_orders` records the customer, status, and total; and `order_items` stores each cat and a snapshot of its name, breed, and price at order time. Foreign keys and database constraints protect relationships and valid inventory states.
+
+This is an educational demo, not a live animal marketplace. Its seeded cat listings are fictional. It does not collect payment or provide production features such as address/shipping management, email verification, password resets, or payment processing. The access token is kept in page memory and expires after one hour; refreshing the page signs the user out.
+
+### Run the API and PostgreSQL locally
+
+Install Docker Desktop, copy the example environment file, and replace its local passwords and JWT secret. The JWT secret must be Base64 that decodes to at least 32 random bytes. For example, in PowerShell:
+
+```powershell
+Copy-Item cat-store-api\.env.example cat-store-api\.env
+$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$bytes = New-Object byte[] 32
+$rng.GetBytes($bytes)
+[Convert]::ToBase64String($bytes)
+```
+
+Put the generated Base64 value in `JWT_SECRET` in `cat-store-api\.env`. Set `POSTGRES_PASSWORD` and `SPRING_DATASOURCE_PASSWORD` to the same local database password, and replace `ADMIN_PASSWORD` with a unique password of 12-72 UTF-8 bytes. The `.env` file is ignored by Git.
+
+Start the API and PostgreSQL:
+
+```powershell
+docker compose --env-file cat-store-api\.env -f cat-store-api\compose.yaml up --build
+```
+
+In a second terminal, serve the portfolio:
+
+```powershell
+python -m http.server 8000
+```
+
+Open `http://localhost:8000/cat-store.html`. The page connects to the API at `http://localhost:8081`. PostgreSQL data is stored in a Docker volume and remains available after restarting the containers. Stop the containers with `docker compose --env-file cat-store-api\.env -f cat-store-api\compose.yaml down`; use `down -v` only if you intentionally want to delete the local database volume and its data.
+
+Run the API tests (they use an isolated in-memory H2 database):
+
+```powershell
+Set-Location cat-store-api
+.\mvnw.cmd test
+```
+
+### Deploy the API and database
+
+Merging to `main` runs `.github/workflows/deploy-portfolio.yml`: GitHub Actions tests the API, builds its Docker image, and publishes the static portfolio to GitHub Pages. GitHub Pages cannot host the Java API or PostgreSQL database. The API is a separate Render web service described in the root `render.yaml`; when that Blueprint is connected to this repository, it deploys commits from `main` and checks readiness at `/api/cats`.
+
+Before the first production deployment, create a managed PostgreSQL database with a provider such as Neon and configure the Render service variables `SPRING_DATASOURCE_URL` (a JDBC PostgreSQL URL using TLS), `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`, `JWT_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD`. The admin password must be 12-72 UTF-8 bytes. Set `CORS_ALLOWED_ORIGINS` to `https://sparky-92-cau.github.io`. Never put these values in the frontend, source code, or committed files. The API runs Flyway migrations automatically when it starts.
+
+The API URL in the `cat-store-api` meta tag in `cat-store.html` must match the Render service URL. Render's free web service may sleep when idle, so the first API request can be slow. Check provider quotas and backup/retention policies before using real data; free tiers change and are for learning, not an uptime or backup guarantee.
 
 ## Run locally
 

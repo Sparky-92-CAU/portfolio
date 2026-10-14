@@ -1,0 +1,36 @@
+services:
+  database:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cat_store}
+      POSTGRES_USER: ${POSTGRES_USER:-cat_store}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in cat-store-api/.env}
+    ports:
+      - "5433:5432"
+    volumes:
+      - cat-store-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/${POSTGRES_DB:-cat_store}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-cat_store}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in cat-store-api/.env}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in cat-store-api/.env}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Set ADMIN_EMAIL in cat-store-api/.env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in cat-store-api/.env}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-https://sparky-92-cau.github.io,http://localhost:8000,http://127.0.0.1:8000}
+      PORT: 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  cat-store-postgres-data:

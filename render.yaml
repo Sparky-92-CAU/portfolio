@@ -8,3 +8,27 @@ services:
     envVars:
       - key: YOUTUBE_API_KEY
         sync: false
+  - type: web
+    name: cat-store-api
+    runtime: docker
+    plan: free
+    branch: main
+    autoDeployTrigger: commit
+    healthCheckPath: /api/cats
+    dockerfilePath: ./cat-store-api/Dockerfile
+    dockerContext: ./cat-store-api
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://sparky-92-cau.github.io
