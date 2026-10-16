@@ -1,7 +1,7 @@
 const apiElement = document.querySelector('meta[name="cat-store-api"]');
 const configuredApiUrl = apiElement?.content.trim() || "";
 const isLocalHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
-const apiBaseUrl = (configuredApiUrl || (isLocalHost ? "http://localhost:8081" : ""))
+const apiBaseUrl = (isLocalHost ? "http://localhost:8081" : configuredApiUrl)
   .replace(/\/$/, "");
 
 const authPanel = document.querySelector("#auth-panel");
@@ -279,15 +279,6 @@ async function loadAccountData() {
     return;
   }
 
-  async function refreshStoreData() {
-    try {
-      await Promise.all([loadCatalog(), loadAccountData()]);
-      setStoreNotice("Store data refreshed.", "success");
-    } catch (error) {
-      setStoreNotice(error.message, "error");
-    }
-  }
-
   if (currentUser?.role === "ADMIN") {
     const [inventory, orders] = await Promise.all([
       apiRequest("/api/admin/cats"),
@@ -296,6 +287,15 @@ async function loadAccountData() {
     renderInventory(inventory);
     renderOrders(adminOrders, orders, { admin: true });
     adminOrdersEmpty.hidden = orders.length !== 0;
+  }
+}
+
+async function refreshStoreData() {
+  try {
+    await Promise.all([loadCatalog(), loadAccountData()]);
+    setStoreNotice("Store data refreshed.", "success");
+  } catch (error) {
+    setStoreNotice(error.message, "error");
   }
 }
 

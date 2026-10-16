@@ -2,3 +2,8 @@ node_modules/
 **/target/
 .env
 **/.env
+.env.local
+**/.env.local
+dist/
+.tsupgrader/
+.neon
