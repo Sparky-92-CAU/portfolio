@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse individual cat listings, manage store inventory, and place database-backed orders in this full-stack Java portfolio demo.">
+    <meta name="cat-store-api" content="https://cat-store-api.onrender.com">
+    <title>Whisker &amp; Willow | Clark Urbon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cat-store.css">
+  </head>
+  <body class="tool-body">
+    <header class="navbar tool-nav">
+      <a class="project-brand grow" href="index.html" aria-label="Urbon Development home">
+        <span class="brand-logo" aria-hidden="true"></span>
+      </a>
+      <nav class="right" aria-label="Main navigation">
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li class="grow"><a href="resume.html">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li>
+          <a href="projects.html">Projects</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li>
+          <a href="projects.html#experiments">Experiments</a>
+          <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        </li>
+        <li><span aria-current="page">Whisker &amp; Willow</span></li>
+      </ol>
+    </nav>
+
+    <main class="cat-store-page">
+      <header class="cat-store-hero">
+        <div>
+          <p class="cat-store-eyebrow">A full-stack Java + PostgreSQL demo</p>
+          <h1>Whisker <span aria-hidden="true">&amp;</span> Willow</h1>
+          <p>Browse individual listings, manage store inventory, and place orders in a database-backed cat store.</p>
+        </div>
+        <div class="cat-store-hero-art" aria-hidden="true">
+          <span>🐈</span>
+          <span>🐾</span>
+        </div>
+      </header>
+
+      <p class="cat-store-disclaimer">
+        Portfolio demonstration only. Listings are fictional sample data; no real animals are offered for sale.
+        Ordering saves a database record but does not take payment.
+      </p>
+      <p class="cat-store-notice" id="store-notice" role="status" aria-live="polite"></p>
+
+      <section class="cat-auth-panel" id="auth-panel" aria-labelledby="auth-heading">
+        <div class="cat-section-heading">
+          <div>
+            <p class="cat-store-eyebrow">Your store account</p>
+            <h2 id="auth-heading">Sign in to continue</h2>
+          </div>
+          <p>Choose the account type you were given. Permissions are checked by the API.</p>
+        </div>
+
+        <div class="cat-auth-tabs" role="group" aria-label="Account type">
+          <button class="cat-tab is-active" type="button" data-login-mode="customer" aria-pressed="true">Customer</button>
+          <button class="cat-tab" type="button" data-login-mode="admin" aria-pressed="false">Admin</button>
+        </div>
+
+        <form class="cat-form" id="login-form">
+          <label>
+            Email
+            <input id="login-email" name="email" type="email" maxlength="254" autocomplete="username" required>
+          </label>
+          <label>
+            Password
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="cat-button cat-button-primary" type="submit">Sign in</button>
+        </form>
+
+        <div class="cat-auth-register" id="register-section">
+          <button class="cat-text-button" id="show-register" type="button">New customer? Create an account</button>
+          <form class="cat-form" id="register-form" hidden>
+            <div class="cat-form-row">
+              <label>
+                First name
+                <input name="firstName" type="text" maxlength="80" autocomplete="given-name" required>
+              </label>
+              <label>
+                Last name
+                <input name="lastName" type="text" maxlength="80" autocomplete="family-name" required>
+              </label>
+            </div>
+            <label>
+              Email
+              <input name="email" type="email" maxlength="254" autocomplete="email" required>
+            </label>
+            <label>
+              Password <span class="cat-label-note">At least 12 characters</span>
+              <input name="password" type="password" minlength="12" maxlength="64" autocomplete="new-password" required>
+            </label>
+            <label>
+              Phone <span class="cat-label-note">Optional</span>
+              <input name="phone" type="tel" maxlength="40" autocomplete="tel">
+            </label>
+            <button class="cat-button cat-button-primary" type="submit">Create customer account</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="cat-account-bar" id="account-bar" hidden>
+        <div>
+          <p class="cat-store-eyebrow">Signed in</p>
+          <strong id="account-name"></strong>
+          <span class="cat-account-role" id="account-role"></span>
+        </div>
+        <button class="cat-button cat-button-secondary" id="sign-out" type="button">Sign out</button>
+      </section>
+
+      <section class="cat-catalog-section" aria-labelledby="catalog-heading">
+        <div class="cat-section-heading">
+          <div>
+            <p class="cat-store-eyebrow">Individual listings</p>
+            <h2 id="catalog-heading">Meet the cats</h2>
+          </div>
+          <p>Each listing is a unique demo record. Reserved and sold cats leave the public catalog.</p>
+        </div>
+        <div class="cat-grid" id="cat-grid"></div>
+        <p class="cat-empty-state" id="catalog-empty" hidden>No cats are currently listed.</p>
+      </section>
+
+      <section class="cat-cart-panel" id="cart-panel" aria-labelledby="cart-heading" hidden>
+        <div class="cat-section-heading">
+          <div>
+            <p class="cat-store-eyebrow">No payment collected</p>
+            <h2 id="cart-heading">Your order</h2>
+          </div>
+          <span class="cat-cart-total" id="cart-total">$0.00</span>
+        </div>
+        <ul class="cat-cart-list" id="cart-list"></ul>
+        <button class="cat-button cat-button-primary" id="place-order" type="button">Place order</button>
+      </section>
+
+      <section class="cat-customer-panel" id="customer-panel" aria-labelledby="customer-orders-heading" hidden>
+        <div class="cat-section-heading">
+          <div>
+            <p class="cat-store-eyebrow">Your account</p>
+            <h2 id="customer-orders-heading">Order history</h2>
+          </div>
+          <p>Order records are loaded from PostgreSQL through the Java API.</p>
+          <button class="cat-button cat-button-secondary" id="refresh-customer-orders" type="button">Refresh orders</button>
+        </div>
+        <div class="cat-orders-list" id="customer-orders"></div>
+        <p class="cat-empty-state" id="customer-orders-empty" hidden>You have not placed any orders yet.</p>
+      </section>
+
+      <section class="cat-admin-panel" id="admin-panel" aria-labelledby="admin-heading" hidden>
+        <div class="cat-section-heading">
+          <div>
+            <p class="cat-store-eyebrow">Admin workspace</p>
+            <h2 id="admin-heading">Store management</h2>
+          </div>
+          <p>Manage cat listings and update the fulfillment status of customer orders.</p>
+          <button class="cat-button cat-button-secondary" id="refresh-admin-data" type="button">Refresh store data</button>
+        </div>
+
+        <div class="cat-admin-grid">
+          <section class="cat-admin-card" aria-labelledby="inventory-heading">
+            <div class="cat-admin-card-heading">
+              <h3 id="inventory-heading">Inventory</h3>
+              <button class="cat-text-button" id="new-cat" type="button">Add a cat</button>
+            </div>
+            <form class="cat-form cat-inventory-form" id="cat-form" hidden>
+              <input id="cat-id" type="hidden">
+              <label>
+                Name
+                <input id="cat-name" name="name" type="text" maxlength="80" required>
+              </label>
+              <label>
+                Breed
+                <input id="cat-breed" name="breed" type="text" maxlength="80" required>
+              </label>
+              <div class="cat-form-row">
+                <label>
+                  Age (months)
+                  <input id="cat-age" name="ageMonths" type="number" min="0" max="360" step="1" required>
+                </label>
+                <label>
+                  Price (USD)
+                  <input id="cat-price" name="price" type="number" min="0.01" step="0.01" inputmode="decimal" required>
+                </label>
+              </div>
+              <label>
+                Description
+                <textarea id="cat-description" name="description" maxlength="1000" rows="3" required></textarea>
+              </label>
+              <div class="cat-form-actions">
+                <button class="cat-button cat-button-primary" id="save-cat" type="submit">Save listing</button>
+                <button class="cat-button cat-button-secondary" id="cancel-cat-edit" type="button">Cancel</button>
+              </div>
+            </form>
+            <div class="cat-admin-inventory" id="admin-inventory"></div>
+          </section>
+
+          <section class="cat-admin-card" aria-labelledby="admin-orders-heading">
+            <div class="cat-admin-card-heading">
+              <h3 id="admin-orders-heading">Customer orders</h3>
+            </div>
+            <div class="cat-orders-list" id="admin-orders"></div>
+            <p class="cat-empty-state" id="admin-orders-empty" hidden>No orders have been placed.</p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer tool-footer">
+      <p>Copyright &copy; Urbon Development 2022</p>
+    </footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <script src="script.js"></script>
+    <script src="cat-store.js"></script>
+  </body>
+</html>

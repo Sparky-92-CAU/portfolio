@@ -1,4 +1,11 @@
 {
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "start:cat-store": "node scripts/start-cat-store.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:cat-store": "node --test tests/cat-store-neon.integration.mjs"
+  },
   "dependencies": {
     "bootstrap": "^5.2.0-beta1"
   }

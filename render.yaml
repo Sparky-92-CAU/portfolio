@@ -18,6 +18,10 @@ services:
     dockerfilePath: ./cat-store-api/Dockerfile
     dockerContext: ./cat-store-api
     envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: neon
+      - key: SPRING_FLYWAY_URL
+        sync: false
       - key: SPRING_DATASOURCE_URL
         sync: false
       - key: SPRING_DATASOURCE_USERNAME

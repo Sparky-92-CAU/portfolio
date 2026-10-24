@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reflect on what matters with a customizable life balance wheel, satisfaction ratings, and private browser-local check-ins.">
+    <title>Life Balance Tracker | Clark Urbon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="life-balance.css">
+  </head>
+  <body class="tool-body">
+    <header class="navbar tool-nav">
+      <a class="project-brand grow" href="index.html" aria-label="Urbon Development home"><span class="brand-logo" aria-hidden="true"></span></a>
+      <nav class="right" aria-label="Main navigation">
+        <ul><li><a href="projects.html">Projects</a></li><li class="grow"><a href="resume.html">Resume</a></li></ul>
+      </nav>
+    </header>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a><span class="breadcrumb-separator" aria-hidden="true">&rsaquo;</span></li>
+        <li><a href="projects.html#tools">Tools</a><span class="breadcrumb-separator" aria-hidden="true">&rsaquo;</span></li>
+        <li><span aria-current="page">Life Balance Tracker</span></li>
+      </ol>
+    </nav>
+    <main class="balance-page">
+      <header class="balance-header">
+        <p class="balance-eyebrow">A little perspective</p>
+        <h1>Life Balance Tracker</h1>
+        <p>Make space for what matters to you. Take a gentle snapshot of how satisfied you feel in each area of your life today.</p>
+      </header>
+      <noscript><p>This tracker needs JavaScript to draw your wheel and save check-ins.</p></noscript>
+      <div class="balance-warning" id="balance-warning" role="alert" hidden>
+        <p id="balance-warning-text"></p>
+        <button type="button" id="balance-reset-storage">Clear tracker data and start fresh</button>
+      </div>
+      <p class="balance-status" id="balance-status" role="status" aria-live="polite"></p>
+      <form id="balance-form">
+        <div class="balance-layout">
+          <section class="balance-panel balance-wheel-panel" aria-labelledby="wheel-heading">
+            <div class="balance-section-heading">
+              <div><p class="balance-eyebrow">Your life, right now</p><h2 id="wheel-heading">Would this wheel roll?</h2></div>
+              <span class="balance-badge" id="rated-count">0 of 8 rated</span>
+            </div>
+            <figure class="balance-figure">
+              <svg id="balance-wheel" viewBox="0 0 640 640" role="img" aria-labelledby="wheel-title wheel-description">
+                <title id="wheel-title">Your satisfaction wheel</title>
+                <desc id="wheel-description">Rate your life areas to plot your satisfaction from the center, 0, to the outer edge, 10.</desc>
+              </svg>
+              <figcaption>Center: 0, totally unsatisfied. Outer edge: 10, completely satisfied. Dots connect once every area is rated.</figcaption>
+            </figure>
+            <p class="balance-gentle-note">A round wheel is not the same as a fulfilling life. There is no perfect shape or score to chase; use it as a starting point for curiosity, not judgment.</p>
+          </section>
+          <section class="balance-panel" aria-labelledby="ratings-heading">
+            <p class="balance-eyebrow">01 / Notice</p>
+            <h2 id="ratings-heading">How satisfied do you feel?</h2>
+            <p class="balance-help" id="rating-help">Rate satisfaction, not how much time or energy you spend. Move each slider to choose a score from 0 to 10, or use its arrow keys. To choose 5 without moving the slider, use "Rate 5".</p>
+            <label class="balance-date-label" for="checkin-date">Check-in date</label>
+            <input id="checkin-date" type="date" required>
+            <div id="balance-categories"></div>
+            <button class="balance-secondary" id="add-category" type="button">+ Add a life area</button>
+            <p class="balance-help">Use 3 to 12 areas. Rename any area to make it yours, or add creativity, learning, or community service.</p>
+          </section>
+          <section class="balance-panel balance-reflection" aria-labelledby="reflection-heading">
+            <p class="balance-eyebrow">02 / Reflect</p>
+            <h2 id="reflection-heading">Look beyond the shape</h2>
+            <div class="balance-reflection-grid">
+              <label for="reflection-balance">Would this wheel roll? What feels neglected or overfocused?
+                <textarea id="reflection-balance" rows="4" maxlength="3000" placeholder="What stands out when you look at your wheel?"></textarea>
+              </label>
+              <label for="reflection-values">Are your highest-scoring areas aligned with your values, or just where you spend time?
+                <textarea id="reflection-values" rows="4" maxlength="3000" placeholder="What matters most to you right now?"></textarea>
+              </label>
+              <label for="reflection-step">What is one small, realistic step you could take?
+                <textarea id="reflection-step" rows="4" maxlength="3000" placeholder="For example: call a friend this Saturday."></textarea>
+              </label>
+            </div>
+            <div class="balance-actions">
+              <button class="balance-primary" type="submit" id="save-checkin">Save check-in</button>
+              <button class="balance-secondary" type="button" id="new-checkin">Start a new check-in</button>
+              <span id="draft-status" class="balance-help">Draft saved automatically in this browser.</span>
+            </div>
+          </section>
+        </div>
+      </form>
+      <section class="balance-panel balance-history" aria-labelledby="history-heading">
+        <div class="balance-section-heading">
+          <div><p class="balance-eyebrow">03 / Revisit</p><h2 id="history-heading">Your check-ins</h2></div>
+          <button type="button" class="balance-secondary" id="clear-history" hidden>Delete saved check-ins</button>
+        </div>
+        <p class="balance-help">Notice change without grading yourself. Each saved check-in keeps its own areas, ratings, and reflections. Changes below compare with the previous dated check-in; newly added areas have no comparison.</p>
+        <p id="history-empty" class="balance-empty">Your story starts here. Save your first check-in when you are ready.</p>
+        <div id="balance-history"></div>
+      </section>
+      <footer class="balance-footnote">
+        <p><strong>Private to this browser, not an account.</strong> Your draft and check-ins are stored on this device only, with no upload or sync. Anyone using this browser profile can see them. Clearing site data removes them; private browsing may not retain them.</p>
+        <p>Inspired by the SMART Recovery Life Balance Wheel exercise. An independent reflection tool, not affiliated with SMART Recovery and not a clinical assessment or substitute for professional support.</p>
+      </footer>
+    </main>
+    <footer class="footer tool-footer"><p>Copyright &copy; Urbon Development 2022</p></footer>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme"><span aria-hidden="true">&#9680;</span></button>
+    <script src="script.js"></script>
+    <script src="life-balance-model.js"></script>
+    <script src="life-balance.js"></script>
+  </body>
+</html>
