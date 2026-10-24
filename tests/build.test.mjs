@@ -8,7 +8,7 @@ import { promisify } from "node:util";
 
 test("static build includes portfolio only, without backend source or configuration", async () => {
   const files = await readdir("dist", { recursive: true });
-  for (const page of ["index.html", "projects.html", "cat-store.html", "guitar-song-finder.html"]) {
+  for (const page of ["index.html", "projects.html", "cat-store.html", "guitar-song-finder.html", "life-balance.html", "life-balance.css", "life-balance.js", "life-balance-model.js"]) {
     assert.ok(files.includes(page), `${page} is published`);
   }
   assert.ok(!files.some((file) => /(^|[/\\])\.env|\.ts$|package.*\.json$|^node_modules|^cat-store-api|^guitar-song-finder-api/.test(file)));

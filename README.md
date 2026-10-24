@@ -8,6 +8,7 @@ A responsive, static portfolio site built with HTML, CSS, and JavaScript. The si
 - [projects.html](website/pages/projects.html) - Arcade games, tools, and experiments.
 - [resume.html](website/pages/resume.html) - Experience, education, certification, and skills.
 - [expense-splitter.html](website/projects/expense-splitter/expense-splitter.html) - Local expense tracker and 50/50 split calculator, with optional custom shares.
+- [life-balance.html](website/projects/life-balance/life-balance.html) - Customizable satisfaction wheel with reflections and browser-local dated check-ins.
 - [guitar-song-finder.html](website/projects/guitar-song-finder/guitar-song-finder.html) - Song lookup and guitar practice frontend.
 - [rest-api-learning.html](website/projects/rest-api-learning/rest-api-learning.html) - Guided REST API lessons, a knowledge check, and a browser-based request simulator with Java Spring examples.
 - [cat-store.html](website/projects/cat-store/cat-store.html) - Cat-store catalog, role-based account screens, inventory tools, and PostgreSQL-backed orders.
@@ -47,6 +48,20 @@ Open **Projects → Tools → Expense Splitter** to record shared purchases. Eac
 The current balance considers only unsettled expenses. A positive balance means your partner owes you; a negative balance means you owe your partner. **Mark expenses settled** archives the current expenses without removing them from settled history.
 
 Expenses are saved in the browser's local storage on the current device. They are not uploaded or synchronized with another device. Clearing the browser's site data will remove them.
+
+## Life Balance Tracker
+
+Open **Projects → Tools → Life Balance Tracker** (published at `/life-balance.html`). Inspired by the SMART Recovery Life Balance Wheel, this independent tool measures **satisfaction**, not time or energy spent, on a 0–10 scale. It is a reflection aid, not a clinical assessment.
+
+- Start with Family, Friends, Spirituality, Romance, Health, Career, Finances, and Fun or leisure. Rename, add, or remove areas to keep 3–12 personally meaningful spokes.
+- Ratings start blank. Move a slider (or use its arrow keys), or select **Rate 5** for the midpoint. Zero means totally unsatisfied; ten means completely satisfied. Each rating plots a dot, and the wheel connects all dots once every area is rated.
+- Reflect on whether the wheel would roll, neglected or overfocused areas, values alignment, and one small next step.
+- **Save check-in** records the selected date, all ratings, and reflections. Saving again during the same editing session updates that check-in. **Start a new check-in** keeps your life areas but clears ratings and reflections.
+- Expand a saved check-in to review its ratings and reflections, compare scores with the previous dated check-in, delete it, or copy it into the draft to view its wheel. Copies save as separate check-ins. Comparisons follow the same life area across renames; newly added areas have no comparison.
+
+Drafts and history use the browser-local key `portfolio-life-balance-v1`. They are not uploaded or synchronized, are visible to anyone using the same browser profile, and are lost when site data is cleared. There is no account or backend. Storage errors appear explicitly; unreadable saved data is not overwritten unless you confirm a tracker-data reset. Deletion requires confirmation.
+
+Run `npm.cmd run build` before `npm.cmd test`; the build regression checks compare the published output against the current source.
 
 ## Song Lookup: Acoustic Song Finder
 
